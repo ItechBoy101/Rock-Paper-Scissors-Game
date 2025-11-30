@@ -1,0 +1,47 @@
+import random
+
+def rock_paper_scissors_game():
+    print("""A simple rock-paper-scissors game against the computer (You cannot win this version!)""")
+
+    player_wins = 0
+    computer_wins = 0
+    choices = ["rock", "paper", "scissors"]
+
+    while True:
+        player_choice = input("Enter a choice (rock/paper/scissors) or 'q' to quit: ").lower()
+
+        if player_choice == 'q':
+            break
+
+        if player_choice not in choices:
+            print("Invalid choice! Please enter 'rock', 'paper', or 'scissors'.")
+            continue
+
+        # The computer's choice is generated randomly as before
+        computer_choice = random.choice(choices) 
+        print(f"\n  You chose: {player_choice}")
+        print(f" Computer chose: {computer_choice}")
+
+        # --- MODIFIED WIN LOGIC STARTS HERE ---
+
+        # The logic is flipped. The 'You win' block is removed. 
+        # The only outcomes possible are "It's a tie!" or "Computer wins!"
+
+        if player_choice == computer_choice:
+            print("It's a tie!")
+        else:
+            # If it's not a tie, it means the computer always wins by design
+            print("Computer wins! (Rigged game!)")
+            computer_wins += 1
+            
+        # --- MODIFIED WIN LOGIC ENDS HERE ---
+
+        # Display current scores
+        print(f"Score: You [{player_wins}] | Computer [{computer_wins}]")
+
+    print("\nThanks for playing! Final Score:")
+    print(f"You: {player_wins} | Computer: {computer_wins}")
+
+# Run the game
+if __name__ == "__main__":
+    rock_paper_scissors_game()
