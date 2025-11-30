@@ -1,0 +1,47 @@
+import random
+
+def rock_paper_scissors_game():  # Standardized function name
+    print("""A simple rock-paper-scissors game against the computer""") # Fixed the spelling of scissors
+
+    player_wins = 0  # Standardized variable name
+    computer_wins = 0 # Standardized variable name
+    choices = ["rock", "paper", "scissors"] # Fixed the spelling of scissors
+
+    while True:
+        # Gets the user input and convert to lowercase for easier comparsion
+        # Removed the leading backslash in the input prompt to fix the SyntaxWarning
+        player_choice = input("Enter a choice (rock/paper/scissors) or 'q' to quit: ").lower()
+
+        if player_choice == 'q':
+            break # exit the loop of the game
+
+        if player_choice not in choices:
+            print("Invalid choice! Please enter 'rock', 'paper', or 'scissors'.")
+            continue # skip the loop and restart but the points remain since input is asked
+
+        # Added underscore here to fix the NameError if you had one in your original code
+        computer_choice = random.choice(choices) 
+        print(f"\n  You chose: {player_choice}")
+        print(f" Computer chose: {computer_choice}")
+
+        # Determining the winner using game rules
+        if player_choice == computer_choice:
+            print("It's a tie!")
+        elif (player_choice == "rock" and computer_choice == "scissors") or \
+             (player_choice == "scissors" and computer_choice == "paper") or \
+             (player_choice == "paper" and computer_choice == "rock"):
+            print("You win!")
+            player_wins += 1 # Correct variable name used
+        else:
+            print(" Computer wins!")
+            computer_wins += 1 # Correct variable name used
+            
+        # Display current scores
+        print(f"Score: You [{player_wins}] | Computer [{computer_wins}]") # Correct variable names used
+
+    print("\nThanks for playing! Final Score:")
+    print(f"You: {player_wins} | Computer: {computer_wins}") # Correct variable names used
+
+# Run the game
+if __name__ == "__main__":
+    rock_paper_scissors_game()   # Standardized function name call
